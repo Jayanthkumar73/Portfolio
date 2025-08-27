@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Futuristic Portfolio Design System */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Light Theme - Light Blue and White */
+    --background: 210 100% 98%;
+    --foreground: 215 25% 15%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+    
+    --primary: 210 100% 65%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 210 40% 95%;
+    --secondary-foreground: 215 25% 15%;
+    
+    --accent: 200 100% 75%;
+    --accent-foreground: 215 25% 15%;
+    
+    --muted: 210 30% 92%;
+    --muted-foreground: 215 15% 45%;
+    
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 210 100% 65%;
+    
+    /* Light Theme Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(210, 100%, 65%), hsl(200, 100%, 75%));
+    --gradient-secondary: linear-gradient(135deg, hsl(210, 40%, 95%), hsl(0, 0%, 100%));
+    --gradient-hero: linear-gradient(135deg, hsl(210, 100%, 98%), hsl(200, 100%, 95%));
+    
+    /* Futuristic Effects */
+    --neon-glow: 0 0 20px hsl(210, 100%, 65%), 0 0 40px hsl(210, 100%, 65%), 0 0 60px hsl(210, 100%, 65%);
+    --hover-glow: 0 0 15px hsl(200, 100%, 75%);
+    --card-shadow: 0 8px 32px hsla(210, 100%, 65%, 0.1);
+    
+    --radius: 1rem;
+  }
+
+  .dark {
+    /* Dark Theme - Purple Gradients */
+    --background: 250 25% 8%;
+    --foreground: 280 15% 92%;
+    
+    --card: 250 20% 12%;
+    --card-foreground: 280 15% 92%;
+    
+    --primary: 270 100% 70%;
+    --primary-foreground: 250 25% 8%;
+    
+    --secondary: 250 15% 18%;
+    --secondary-foreground: 280 15% 92%;
+    
+    --accent: 300 100% 75%;
+    --accent-foreground: 250 25% 8%;
+    
+    --muted: 250 10% 25%;
+    --muted-foreground: 280 10% 65%;
+    
+    --border: 250 15% 20%;
+    --input: 250 15% 20%;
+    --ring: 270 100% 70%;
+    
+    /* Dark Theme Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(270, 100%, 70%), hsl(300, 100%, 75%));
+    --gradient-secondary: linear-gradient(135deg, hsl(250, 20%, 12%), hsl(250, 25%, 18%));
+    --gradient-hero: linear-gradient(135deg, hsl(250, 25%, 8%), hsl(270, 20%, 15%));
+    --gradient-cosmic: linear-gradient(135deg, hsl(270, 100%, 70%), hsl(300, 100%, 75%), hsl(330, 100%, 80%));
+    
+    /* Dark Theme Futuristic Effects */
+    --neon-glow: 0 0 20px hsl(270, 100%, 70%), 0 0 40px hsl(270, 100%, 70%), 0 0 60px hsl(270, 100%, 70%);
+    --hover-glow: 0 0 15px hsl(300, 100%, 75%);
+    --card-shadow: 0 8px 32px hsla(270, 100%, 70%, 0.2);
+    --cosmic-glow: 0 0 30px hsl(300, 100%, 75%), 0 0 60px hsl(300, 100%, 75%);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-rajdhani;
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', monospace;
+  }
+}
+
+@layer components {
+  /* Futuristic Button Variants */
+  .btn-futuristic {
+    @apply relative overflow-hidden bg-gradient-to-r from-primary to-accent text-primary-foreground font-orbitron font-semibold px-8 py-3 rounded-xl;
+    background: var(--gradient-primary);
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .btn-futuristic:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--neon-glow);
+  }
+  
+  .btn-futuristic::before {
+    @apply absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 transition-opacity duration-300;
+    content: '';
+    background: var(--gradient-cosmic);
+  }
+  
+  .btn-futuristic:hover::before {
+    opacity: 1;
+  }
+  
+  /* Floating Animation */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-20px) rotate(1deg); }
+    66% { transform: translateY(-10px) rotate(-1deg); }
+  }
+  
+  /* Glow Effect */
+  .glow-effect {
+    box-shadow: var(--neon-glow);
+  }
+  
+  /* Cosmic Background */
+  .cosmic-bg {
+    background: var(--gradient-hero);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cosmic-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, hsla(270, 100%, 70%, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, hsla(300, 100%, 75%, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, hsla(330, 100%, 80%, 0.1) 0%, transparent 50%);
+    opacity: 0.5;
+  }
+  
+  /* Skill Card Effects */
+  .skill-card {
+    @apply relative p-6 rounded-2xl bg-card border border-border backdrop-blur-sm;
+    background: var(--gradient-secondary);
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .skill-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--hover-glow);
+  }
+  
+  /* Scroll Reveal Animation */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Typing Animation */
+  .typing-animation {
+    display: inline-block;
+    border-right: 3px solid;
+    border-color: hsl(var(--primary));
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: hsl(var(--primary)); }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
